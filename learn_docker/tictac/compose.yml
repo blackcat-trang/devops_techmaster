@@ -5,8 +5,14 @@ services:
     volumes:
       - .:/app
   nginx:
-    build: ./nginx
     depends_on:
       - frontend
+    restart: always
+    build: ./nginx
     ports:
-      - "3000:80"
+      - "7777:80"
+    volumes:
+      - "/Users/letrang/study/projects:/var/www/html"
+      - "nginxdata:/var/www/public_nginx"
+volumes:
+  nginxdata:
